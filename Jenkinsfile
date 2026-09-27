@@ -2,7 +2,11 @@
 
 pipeline {
     agent any
-    stages {
+    
+
+    options {
+        timeout(time: 1, unit: 'HOURS')
+    }stages {
         stage('Build & Test') {
             steps {
                 smartBuild(type: 'maven', pom: 'deployment/StackPulseAwsDeployment/pom.xml', goals: 'test package')
